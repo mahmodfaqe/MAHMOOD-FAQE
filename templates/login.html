@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>چوونەژوورەوە</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+<header>
+    <h1>چوونەژوورەوە</h1>
+    <nav>
+        <a href="{{ url_for('index') }}">🏠 گەڕانەوە</a> |
+        <a href="{{ url_for('register') }}">📝 تۆمارکردن</a>
+    </nav>
+</header>
+
+<div class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flash-messages">
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <form method="POST" class="login-form">
+        <label for="email">📧 ئیمەیڵ:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="password">🔒 وشەی نهێنی:</label>
+        <input type="password" id="password" name="password" required />
+
+        <button type="submit">✅ چوونەژوورەوە</button>
+    </form>
+</div>
+
+<footer>
+    &copy; 2025 بۆ کوێ - هەموو مافەکان پارێزراون
+</footer>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>تۆمارکردن</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+<header>
+    <h1>تۆمارکردن</h1>
+    <nav>
+        <a href="{{ url_for('index') }}">گەڕانەوە</a> |
+        <a href="{{ url_for('login') }}">چوونەژوورەوە</a>
+    </nav>
+</header>
+
+<div class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul class="flash-messages">
+          {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+        <label for="username">ناوی بەکارهێنەر:</label><br/>
+        <input type="text" id="username" name="username" required /><br/>
+
+        <label for="email">ئیمەیڵ:</label><br/>
+        <input type="email" id="email" name="email" required /><br/>
+
+        <label for="phone">ژمارەی موبایل:</label><br/>
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{10,15}" required /><br/>
+
+        <label for="password">وشەی نهێنی:</label><br/>
+        <input type="password" id="password" name="password" required /><br/>
+
+        <button type="submit">تۆمارکردن</button>
+    </form>
+</div>
+
+<footer>
+    &copy; 2025 بۆ کوێ - هەموو مافەکان پارێزراون
+</footer>
+</body>
+</html>

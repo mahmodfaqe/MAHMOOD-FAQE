@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ place.name[lang] }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+<header>
+    <h1>{{ place.name[lang] }}</h1>
+    <nav>
+        <a href="{{ url_for('index') }}">گەڕانەوە</a> |
+        <a href="{{ url_for('rent_place', place_id=place.id) }}">بە کرێ بگرە</a>
+    </nav>
+</header>
+
+<div class="container">
+    <img src="{{ url_for('static', filename=place.image) }}" alt="{{ place.name[lang] }}" style="max-width: 100%; height: auto;" />
+    <h3>{{ place.name[lang] }}</h3>
+    <p><strong>جۆر:</strong> {{ place.category }}</p>
+    <p><strong>نرخ:</strong> {{ place.price }}</p>
+    <p><strong>شوێن:</strong> {{ place.location }}</p>
+    <a class="rent-button" href="{{ url_for('rent_place', place_id=place.id) }}">بە کرێ بگرە ➔</a>
+</div>
+
+<footer>
+    &copy; 2025 بۆ کوێ
+</footer>
+</body>
+</html>

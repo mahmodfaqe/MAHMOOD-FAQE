@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ku">
+<head>
+    <meta charset="UTF-8" />
+    <title>داشبۆرد</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+    <header>
+        <h1>بەخێربێیت، {{ username }}!</h1>
+        <nav>
+            <a href="{{ url_for('home') }}">پەڕەی سەرەکی</a> |
+            <a href="{{ url_for('logout') }}">چوونەدەرەوە</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <p>ئێمە زۆر دڵخۆین کە تۆ لەگەڵمانیت!</p>
+            <p>دەتوانیت شوێنە گەشتیارییەکان بگەڕێیت یان زانیاری نوێ زیاد بکەیت.</p>
+        </div>
+    </main>
+
+    <footer>
+        &copy; بۆ کوێ؟ 2025 - هەموو مافەکان پارێزراوە.
+    </footer>
+</body>
+</html>

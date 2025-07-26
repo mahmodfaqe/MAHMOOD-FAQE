@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>بە کرێ گرتن - {{ place.name[lang] }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+<header>
+    <h1>بە کرێ گرتن بۆ {{ place.name[lang] }}</h1>
+    <nav>
+        <a href="{{ url_for('place_detail', place_id=place.id) }}">⬅ گەڕانەوە</a>
+    </nav>
+</header>
+
+<div class="container">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flash-messages">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST" class="rent-form">
+        <label for="name">👤 ناوت:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="phone">📱 ژمارەی مۆبایل:</label>
+        <input type="tel" id="phone" name="phone" placeholder="07XXXXXXXXX" required />
+
+        <label for="date">📅 رۆژی بەکرێ گرتن:</label>
+        <input type="date" id="date" name="date" required />
+
+        <button type="submit">✅ بە کرێ بگرە</button>
+    </form>
+</div>
+
+<footer>
+    &copy; 2025 بۆ کوێ
+</footer>
+</body>
+</html>

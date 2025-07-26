@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>بۆ کوێ - بۆ گەشت و گەشتگوزار</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+<header>
+    <h1>🗺 بۆ کوێ️</h1>
+    <nav>
+        <a href="{{ url_for('index') }}">هەموو</a>
+        <a href="{{ url_for('index', category='Park') }}">پارک</a>
+        <a href="{{ url_for('index', category='Villa') }}">ڤیلا</a>
+        <a href="{{ url_for('index', category='Cafe') }}">کافە</a> |
+        <a href="{{ url_for('set_language', language='en') }}">English</a>
+        <a href="{{ url_for('set_language', language='ku') }}">کوردی</a>
+        <a href="{{ url_for('set_language', language='ar') }}">عەرەبی</a> |
+        <a href="{{ url_for('register') }}">خۆت تۆمار بکە</a> |
+        <a href="{{ url_for('contact') }}">پەیوەندی</a>
+    </nav>
+</header>
+
+<main>
+    <div class="container">
+        {% if places %}
+            {% for place in places %}
+                <div class="place-card">
+                    <img src="{{ url_for('static', filename=place.image) }}" alt="{{ place.name[lang] }}">
+                    <div class="place-info">
+                        <h2>{{ place.name[lang] }}</h2>
+                        <p><strong>جۆر:</strong> {{ place.category }}</p>
+                        <p><strong>نرخ:</strong> {{ place.price }}</p>
+                        <p><strong>شوێن:</strong> {{ place.location }}</p>
+                        <a href="{{ url_for('place_detail', place_id=place.id) }}">زانیاری زیاتر ➔</a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>شوێنێک نەدۆزرایەوە.</p>
+        {% endif %}
+    </div>
+</main>
+
+<footer>
+&copy;        بۆ کوێ - هەموو مافەکان پارێزراون 2025  |
+
+       WhatsApp      پەیوەندیمان پێوەبکە لە ڕێگەی     :
+    <a href="https://wa.me/9647704692000" style="color:white;">07704692000</a> /
+    <a href="https://wa.me/9647507087901" style="color:white;">07507087901</a>
+</footer>
+</body>
+</html>
